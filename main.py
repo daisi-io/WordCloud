@@ -19,6 +19,6 @@ def compute(texts_path:pd.DataFrame):
 
     return [
         {"type": "html", "data": html_out},
-        {"type": "image", "label": "black", "data":  {"alt": "QR code", "src": "data:image/png;base64, " + black}},
-        {"type": "image", "label": "pink", "data":  {"alt": "QR code", "src": "data:image/png;base64, " + pink}},
+        {"type": "image", "label": "black", "data":  {"alt": "Black WordCloud", "src": "data:image/png;base64, " + black}},
+        {"type": "image", "label": "pink", "data":  {"alt": "Pink WordCloud", "src": "data:image/png;base64, " + pink}},
     ]
