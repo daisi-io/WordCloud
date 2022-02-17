@@ -108,7 +108,8 @@ def compute_wc(df, feature_names):
     data = dff.transpose()
     data.columns = ['word_list']
 
-    wordcloud = WordCloud(font_path = '/Library/Fonts/Arial Unicode.ttf', background_color="#f0f0f0", width=1920, height=1080, max_words=500).generate_from_frequencies(data['word_list'])
+    # wordcloud = WordCloud(font_path = '/Library/Fonts/Arial Unicode.ttf', background_color="#f0f0f0", width=1920, height=1080, max_words=500).generate_from_frequencies(data['word_list'])
+    wordcloud = WordCloud(background_color="#f0f0f0", width=1920, height=1080, max_words=500).generate_from_frequencies(data['word_list'])
     black = io.BytesIO()
     fig = plt.figure(figsize = (15,10))
     plt.imshow(wordcloud.recolor(color_func=black_color_func, random_state=3), interpolation="bilinear")
@@ -117,7 +118,8 @@ def compute_wc(df, feature_names):
     plt.close(fig)
     black = base64.b64encode(black.getvalue()).decode("utf-8").replace("\n", "")
 
-    wordcloud = WordCloud(font_path = '/Library/Fonts/Arial Unicode.ttf', background_color="#0f0628", width=1920, height=1080, max_words=500).generate_from_frequencies(data['word_list'])
+    # wordcloud = WordCloud(font_path = '/Library/Fonts/Arial Unicode.ttf', background_color="#0f0628", width=1920, height=1080, max_words=500).generate_from_frequencies(data['word_list'])
+    wordcloud = WordCloud(background_color="#0f0628", width=1920, height=1080, max_words=500).generate_from_frequencies(data['word_list'])
     pink = io.BytesIO()
     fig = plt.figure(figsize = (15,10))
     plt.imshow(wordcloud.recolor(color_func=pink_color_func_constant, random_state=3), interpolation="bilinear")

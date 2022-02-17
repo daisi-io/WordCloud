@@ -32,4 +32,4 @@ def compute(text_path:pd.DataFrame):
 
 # if __name__ == "__main__":
 #     path = '/Users/zhenshanjin/Documents/Belmont/sandy/UtilityDaisies/WordCloud/abstracts.p'
-#     res = create_wordcloud(path)
+#     res = compute(path)
