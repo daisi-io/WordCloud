@@ -5,6 +5,7 @@ from wordcloud_processing import clean_corpus, get_tf_idf, compute_wc, prepare_h
 
 
 def compute(texts_path:pd.DataFrame):
+    print(f"input path: {texts_path}")
     start = datetime.now()
     papers, list_words = clean_corpus(texts_path)
     print(f"finish cleaning text: {datetime.now() - start}")
@@ -16,4 +17,8 @@ def compute(texts_path:pd.DataFrame):
     
     html_out = prepare_html_output(black, pink)
 
-    return [{"type": "html", "data": html_out}]
+    return [
+        {"type": "html", "data": html_out},
+        {"type": "image", "label": "black", "data":  {"alt": "QR code", "src": "data:image/png;base64, " + black}},
+        {"type": "image", "label": "pink", "data":  {"alt": "QR code", "src": "data:image/png;base64, " + pink}},
+    ]
