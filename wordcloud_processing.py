@@ -1,8 +1,8 @@
 # Import the wordcloud library
 from wordcloud import WordCloud
 import pandas as pd
-from nltk.corpus import wordnet as wn
-from nltk.corpus import stopwords
+# from nltk.corpus import wordnet as wn
+# from nltk.corpus import stopwords
 import random
 import matplotlib.pyplot as plt
 import numpy as np
@@ -11,6 +11,8 @@ import base64
 import markdown as md
 
 from sklearn.feature_extraction.text import TfidfVectorizer
+
+from stopwords import stopwords
 
 
 def pink_color_func(word, font_size, position, orientation, random_state=None, **kwargs):
@@ -48,7 +50,7 @@ def clean_corpus(text_path):
     list_words = []
     to_keep = ['stress', 'properties', 'process']
 
-    stop_words = set(stopwords.words('english'))
+    stop_words = set(stopwords)
     all_sentences = papers['description'].tolist()
 
     for i, s in enumerate(all_sentences):
@@ -65,7 +67,7 @@ def clean_corpus(text_path):
                 except:
                     to_add = True
                     pos = 'n'
-                if len(wn.synsets(w)) > 0: pos = wn.synsets(w)[0].pos()
+                # if len(wn.synsets(w)) > 0: pos = wn.synsets(w)[0].pos()
                 if w == 'analyses': w = 'analysis'
                 if w == 'technologie': w = 'technology'
                 if (w not in to_keep) and (w.endswith('s')): w = w[:-1]
