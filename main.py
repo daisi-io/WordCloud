@@ -1,8 +1,10 @@
 from datetime import datetime
+import pandas as pd
+
 from wordcloud_processing import clean_corpus, get_tf_idf, compute_wc, prepare_html_output
 
 
-def compute(text_path):
+def compute(text_path:pd.DataFrame):
     start = datetime.now()
     papers, list_words = clean_corpus(text_path)
     print(f"finish cleaning text: {datetime.now() - start}")
@@ -16,17 +18,17 @@ def compute(text_path):
 
     return [{"type": "html", "data": html_out}]
 
-def schema():
-    r = [
-        {
-            "id":    "text_path",
-            "type":  "file",
-            "label": "paragraph text path",
-            "props": {}
-        }
-    ]
+# def schema():
+#     r = [
+#         {
+#             "id":    "text_path",
+#             "type":  "file",
+#             "label": "paragraph text path",
+#             "props": {}
+#         }
+#     ]
 
-    return r
+#     return r
 
 # if __name__ == "__main__":
 #     path = '/Users/zhenshanjin/Documents/Belmont/sandy/UtilityDaisies/WordCloud/abstracts.p'
