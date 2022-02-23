@@ -40,10 +40,15 @@ def strip_char(w):
 
 def clean_corpus(text_path):
     # papers = pd.read_pickle(text_path)
-    with open(text_path, "r") as istr:
-        data = [i.strip() for i in istr.readlines()]
+    if isinstance(text_path, str):
+        with open(text_path, "r") as istr:
+            data = [i.strip() for i in istr.readlines()]
+        papers = pd.DataFrame([{"id": i, "description": t} for i, t in enumerate(data)])
+    else:
+        papers = text_path
+
     
-    papers = pd.DataFrame([{"id": i, "description": t} for i, t in enumerate(data)])
+    
 
     to_exclude = ['page', 'table', 'http', 'et al', 'conclusion', 'm', 't', 'c', 'et', 'al', 'data', 'acknowledgements', 'publisher', 'Authors', 'details', 'contribution', 'Author', 'result',
                     'results', 'study', 'found conclusion', 'using', 'system', 'method', 'sample', 'value', 'project', 'thus', 'increase', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
