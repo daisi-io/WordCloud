@@ -45,7 +45,7 @@ def clean_corpus(text_path):
             data = [i.strip() for i in istr.readlines()]
         papers = pd.DataFrame([{"id": i, "description": t} for i, t in enumerate(data)])
     else:
-        papers = text_path
+        papers = pd.DataFrame(text_path)
 
     
     
