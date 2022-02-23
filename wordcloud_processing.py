@@ -79,7 +79,7 @@ def clean_corpus(text_path):
                 # if len(wn.synsets(w)) > 0: pos = wn.synsets(w)[0].pos()
                 if w == 'analyses': w = 'analysis'
                 if w == 'technologie': w = 'technology'
-                if (w not in to_keep) and (w.endswith('s')): w = w[:-1]
+                if (w not in to_keep): w = w[:-1]
                 if (w in stop_words) or (pos != 'n') or (w.endswith('ed')) or (w in to_exclude): to_add = False
                 if 'http' in w: to_add = False
                 if '0' in w: to_add = False
