@@ -12,14 +12,13 @@ import base64
 import markdown as md
 import tempfile
 
+from sklearn.feature_extraction.text import TfidfVectorizer
+
 root_folder = tempfile.gettempdir()
 nltk.download('wordnet', download_dir=root_folder)
 nltk.download('stopwords', download_dir=root_folder) 
 nltk.download('omw-1.4', download_dir=root_folder)
 nltk.data.path.append(root_folder)
-
-from sklearn.feature_extraction.text import TfidfVectorizer
-
 
 def pink_color_func(word, font_size, position, orientation, random_state=None, **kwargs):
 	return "hsl(327, 100%%, %d%%)" % random.randint(25, 80)
