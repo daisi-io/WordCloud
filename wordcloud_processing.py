@@ -20,8 +20,6 @@ nltk.data.path.append(root_folder)
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-# from stopwords import stopwords
-
 
 def pink_color_func(word, font_size, position, orientation, random_state=None, **kwargs):
 	return "hsl(327, 100%%, %d%%)" % random.randint(25, 80)
