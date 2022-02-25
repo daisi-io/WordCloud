@@ -66,7 +66,7 @@ def clean_corpus(text_path):
     list_words = []
     to_keep = ['stress', 'properties', 'process']
 
-    stop_words = set(stopwords)
+    stop_words = set(stopwords.words('english'))
     all_sentences = papers['description'].tolist()
 
     for i, s in enumerate(all_sentences):
