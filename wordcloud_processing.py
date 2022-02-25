@@ -15,6 +15,7 @@ import tempfile
 root_folder = tempfile.gettempdir()
 nltk.download('wordnet', download_dir=root_folder)
 nltk.download('stopwords', download_dir=root_folder) 
+nltk.download('omw-1.4', download_dir=root_folder)
 nltk.data.path.append(root_folder)
 
 from sklearn.feature_extraction.text import TfidfVectorizer
