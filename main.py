@@ -4,7 +4,7 @@ import pandas as pd
 from wordcloud_processing import clean_corpus, get_tf_idf, compute_wc, prepare_html_output
 
 
-def compute(texts):
+def generate_wordcloud(texts):
     # print(f"input path: {texts_path}")
     start = datetime.now()
     text_df = pd.DataFrame(texts)
