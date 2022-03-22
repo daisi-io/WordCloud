@@ -4,10 +4,11 @@ import pandas as pd
 from wordcloud_processing import clean_corpus, get_tf_idf, compute_wc, prepare_html_output
 
 
-def compute(texts_path:pd.DataFrame):
-    print(f"input path: {texts_path}")
+def compute(texts):
+    # print(f"input path: {texts_path}")
     start = datetime.now()
-    papers, list_words = clean_corpus(texts_path)
+    text_df = pd.DataFrame(texts)
+    papers, list_words = clean_corpus(text_df)
     print(f"finish cleaning text: {datetime.now() - start}")
 
     start = datetime.now()
