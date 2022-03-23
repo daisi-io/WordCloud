@@ -51,7 +51,7 @@ def clean_corpus(text_path):
         papers = pd.DataFrame([{"id": i, "description": t} for i, t in enumerate(data)])
     else:
         # papers = pd.DataFrame(text_path)
-        data = text_path['title'].tolist()
+        data = text_path
         papers = pd.DataFrame([{"id": i, "description": t} for i, t in enumerate(data)])
 
     

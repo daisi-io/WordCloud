@@ -7,8 +7,7 @@ from wordcloud_processing import clean_corpus, get_tf_idf, compute_wc, prepare_h
 def generate_wordcloud(texts):
     # print(f"input path: {texts_path}")
     start = datetime.now()
-    text_df = pd.DataFrame(texts)
-    papers, list_words = clean_corpus(text_df)
+    papers, list_words = clean_corpus(texts)
     print(f"finish cleaning text: {datetime.now() - start}")
 
     start = datetime.now()
