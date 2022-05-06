@@ -146,6 +146,28 @@ def compute_wc(df, feature_names):
     
     return black, pink
 
+def compute_wc_black(df, feature_names):
+    frequencies = []
+    for c in df.columns:
+        summation = np.sum(df[c])
+        frequencies.append(summation)
+    frequencies = np.array(frequencies)
+    dff = pd.DataFrame(frequencies.reshape((1,frequencies.shape[0])), columns=feature_names)
+    data = dff.transpose()
+    data.columns = ['word_list']
+
+    # wordcloud = WordCloud(font_path = '/Library/Fonts/Arial Unicode.ttf', background_color="#f0f0f0", width=1920, height=1080, max_words=500).generate_from_frequencies(data['word_list'])
+    wordcloud = WordCloud(background_color="#f0f0f0", width=1920, height=1080, max_words=500).generate_from_frequencies(data['word_list'])
+    black = io.BytesIO()
+    fig = plt.figure(figsize = (15,10))
+    plt.imshow(wordcloud.recolor(color_func=black_color_func, random_state=3), interpolation="bilinear")
+    plt.axis("off")
+    fig.savefig(black, format='png', bbox_inches="tight", transparent = True)
+    plt.close(fig)
+    black = base64.b64encode(black.getvalue()).decode("utf-8").replace("\n", "")
+
+    return black
+
 class HTMLDoc:
     def __init__(self):
         self.markdown = ''

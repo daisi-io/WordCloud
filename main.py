@@ -1,7 +1,7 @@
 from datetime import datetime
 import pandas as pd
 
-from wordcloud_processing import clean_corpus, get_tf_idf, compute_wc, prepare_html_output
+from wordcloud_processing import clean_corpus, get_tf_idf, compute_wc, compute_wc_black, prepare_html_output
 
 
 def compute(texts_path:pd.DataFrame):
@@ -32,9 +32,7 @@ def generate_wordcloud_byte(texts_path:pd.DataFrame):
 
     start = datetime.now()
     df, feature_names = get_tf_idf(papers['description'])
-    black, pink = compute_wc(df, feature_names)
+    black = compute_wc_black(df, feature_names)
     print(f"finish compute word cloud: {datetime.now() - start}")
     
-    html_out = prepare_html_output(black, pink)
-
-    return ("data:image/png;base64, " + black, "data:image/png;base64, " + pink)
+    return black
